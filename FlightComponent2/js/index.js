@@ -24,6 +24,21 @@ $("#Search").click(function () {
     var desCity = document.getElementById("ArrivalStationNameSelect");
     var selectedDes = desCity.options[desCity.selectedIndex].text;
 
+    // CEGS 21/11/2021 - Se incluye un mensaje de "Cargando" al momento de consultar la WebAPI de vuelos disponibles.
+    $.blockUI({
+        css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .5,
+            color: '#fff'
+        },
+        message: '<h1>Cargando...</h1>'
+    });
+    // CEGS 21/11/2021
+
     LoadDataDiv("divAvailableFlight", "post", {
         originCode: $("#DepartureStationNameSelect").val(),
         originName: selectedOri,
@@ -31,6 +46,9 @@ $("#Search").click(function () {
         destinationName: selectedDes,
         arrivaldate: $("#arrivalDate").val()
     }, "AvailableFlights", "Home");
+    // CEGS 21/11/2021 - Se incluye un mensaje de "Cargando" al momento de consultar la WebAPI de vuelos disponibles.
+    $.unblockUI();
+    // CEGS 21/11/2021
 });
 
 function LoadDataDiv(idDiv, metodoGetPost, data, nombreAccion, controlador) {
