@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ModelLayer.FlightReservation>
+
+<h2>AvailableFlights</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("ORIGIN")
+        </th>
+        <th>
+            @Html.Label("DESTINATION")
+        </th>
+        <th>
+            @Html.Label("DEPARTURE DATE")
+        </th>
+        <th>
+            @Html.Label("PRICE")
+        </th>
+        <th>
+            @Html.Label("FLIGHT NUMBER")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="FlightRows">
+            <td>
+                <div hidden id="departureStation">@Html.DisplayFor(modelItem => item.DepartureStation)</div>
+                <div id="departureStationName">@Html.DisplayFor(modelItem => item.DepartureStationName)</div>
+            </td>
+            <td>
+                <div hidden id="arrivalStation">@Html.DisplayFor(modelItem => item.ArrivalStation)</div>
+                <div id="arrivalStationName">@Html.DisplayFor(modelItem => item.ArrivalStationName)</div>
+            </td>
+            <td>
+                <div id="departureDate">@Html.DisplayFor(modelItem => item.DepartureDate)</div>
+            </td>
+            <td>
+                <div id="price">@Html.DisplayFor(modelItem => item.Price)</div>
+            </td>
+            <td>
+                <div id="flightNumber">@Html.DisplayFor(modelItem => item.FlightNumber)</div>
+                <div hidden id="currency">@Html.DisplayFor(modelItem => item.Currency)</div>
+            </td>
+            <td>
+                <button class="btn btn-info" id="Select">Select</button>
+            </td>
+        </tr>
+    }
+
+</table>
+<div id="divAvailableFlight"></div>
+<div class="modal-body" id="modal-body1"></div>
+
+<script src="~/js/availableFlights.js"></script>

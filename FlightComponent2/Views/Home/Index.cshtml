@@ -1,0 +1,39 @@
+﻿@model ModelLayer.FlightReservation
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Available Flights</a>
+        </h4>
+    </div>
+    <div class="container pl-0 pr-0 mt-1">
+        <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body" id="divBody_OportunidadCotizaciones">
+                <div class="row">
+                    <div class="col-md-2 font-weight-bold">ORIGIN:</div>
+                    <div class="col-md-2">
+                        @Html.DropDownList("DepartureStationNameSelect", (IEnumerable<SelectListItem>)ViewBag.iataList)
+                    </div>
+                    <div class="col-md-2 font-weight-bold">DESTINATION:</div>
+                    <div class="col-md-2">
+                        @Html.DropDownList("ArrivalStationNameSelect", (IEnumerable<SelectListItem>)ViewBag.iataList)
+                    </div>
+                    <div class="col-md-2 font-weight-bold">DEPARTURE DATE:</div>
+                    <input class="form-control arrivalDate" type="text" id="arrivalDate" />
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4"><button class="btn btn-primary" id="Search">Search</button></div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </div>
+    <div id="divAvailableFlight"></div>
+    <div class="modal-body" id="modal-body1"></div>
+</div>
+
+
+<script src="~/js/index.js"></script>
+
